@@ -6,6 +6,7 @@ import com.vti.blogapp.form.CommentUpdateForm;
 import com.vti.blogapp.mapper.CommentMapper;
 import com.vti.blogapp.repository.CommentRepository;
 import com.vti.blogapp.repository.PostRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.domain.Page;
@@ -51,4 +52,11 @@ public class CommentServiceImpl implements CommentService{
     public void deleteById(Long id) {
         commentRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional
+    public void deleteByEmail(String email) {
+        commentRepository.deleteByEmail(email);
+    }
+
 }
